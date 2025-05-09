@@ -2,90 +2,125 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Ismail Family</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --text: #0a0a0a;
+      --muted: #666;
+      --bg: #ffffff;
+      --accent: #635bff;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    body {
+    html, body {
+      height: 100%;
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(to bottom right, #f9f9f9, #eaeaea);
-      color: #222;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body {
       display: flex;
-      justify-content: center;
       align-items: center;
-      height: 100vh;
-      text-align: center;
+      justify-content: center;
       padding: 2rem;
+      position: relative;
+    }
+
+    .background {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(99,91,255,0.05), rgba(0,0,0,0));
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .wave {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: repeating-radial-gradient(circle at 50% 50%, rgba(99,91,255,0.03), rgba(99,91,255,0.03) 1px, transparent 2px, transparent 100px);
+      animation: waveMove 20s linear infinite;
+    }
+
+    @keyframes waveMove {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-25%, -25%); }
     }
 
     .container {
-      max-width: 800px;
-      animation: fadeIn 1.5s ease-out;
+      max-width: 720px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: 2.75rem;
+      font-weight: 700;
       margin-bottom: 1rem;
-      line-height: 1.2;
+      letter-spacing: -0.02em;
     }
 
     p {
-      font-size: 1.25rem;
+      font-size: 1.125rem;
+      color: var(--muted);
       margin-bottom: 2rem;
-      color: #555;
     }
 
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .buttons a {
-      text-decoration: none;
-      background-color: #111;
-      color: white;
+    .button {
+      display: inline-block;
+      background-color: var(--accent);
+      color: #fff;
       padding: 0.75rem 1.5rem;
-      border-radius: 8px;
-      transition: background-color 0.3s;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: rem;
+      transition: background-color 0.1s ease, transform 0.1s ease;
     }
 
-    .buttons a:hover {
-      background-color: #333;
+    .button:hover {
+      background-color: #4e47d0;
+      transform: translateY(-2px);
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    footer {
+      margin-top: 3rem;
+      color: var(--muted);
+      font-size: 0.875rem;
     }
 
     @media (max-width: 600px) {
-      h1 {
-        font-size: 2.2rem;
-      }
-
-      p {
-        font-size: 1rem;
-      }
+      h1 { font-size: 2rem; }
+      p { font-size: 1rem; }
+      .button { width: 100%; padding: 1rem; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Welcome to the Ismail Family</h1>
-    <p>Stories, photos, and memories — shared with love.</p>
-    <div class="buttons">
-      <a href="#photos">View Photos</a>
-      <a href="#about">Our Story</a>
-      <a href="#contact">Say Hello</a>
-    </div>
+
+  <div class="background">
+    <div class="wave"></div>
   </div>
+
+  <div class="container">
+    <h1>The Ismail Family</h1>
+    <p>Simple, modern, and made with love — a family homepage to stay connected and share memories.</p>
+    <a href="mailto:hello@ismail.co.zw?subject=Hello from the website&body=Hi there!" class="button">Email Us</a>
+    <footer>&copy; 2025 The Ismail Family</footer>
+  </div>
+
 </body>
 </html>
